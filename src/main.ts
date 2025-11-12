@@ -1,6 +1,6 @@
 document.addEventListener('DOMContentLoaded', () => {
-  const el = document.getElementById('app') || document.body;
-  const h1 = document.createElement('h1');
-  h1.textContent = 'Hi, my name is niyaz';
-  el.appendChild(h1);
+  // Set dynamic bits without disturbing the static content
+  document.title = 'Niyaz — personal site';
+  const yearEl = document.getElementById('year');
+  if (yearEl) yearEl.textContent = String(new Date().getFullYear());
 });

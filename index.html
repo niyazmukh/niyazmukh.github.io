@@ -3,14 +3,53 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>niyaz — personal site</title>
-    <meta name="description" content="Personal site of niyaz" />
+    <title>Niyaz — personal site</title>
+    <meta name="description" content="PhD researcher (human–AI interaction) and product manager." />
     <style>
-      body { font-family: system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif; line-height: 1.5; padding: 2rem; }
+      :root { color-scheme: light dark; }
+      html { -webkit-text-size-adjust: 100%; }
+      body { font-family: system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif; line-height: 1.7; margin: 0; }
+      .wrap { max-width: 720px; padding: 24px; margin: 0 auto; }
+      header h1 { font-size: 2rem; margin: 0 0 .25rem; }
+      .tagline { margin: 0 0 1rem; opacity: .8; }
+      main section { margin: 1.25rem 0; }
+      .links { margin-top: 1rem; }
+      .links a { display: inline-block; margin-right: 12px; text-decoration: none; border-bottom: 1px solid currentColor; }
+      footer { margin-top: 2rem; opacity: .6; font-size: .9rem; }
     </style>
     <script src="./dist/main.js" defer></script>
   </head>
   <body>
-    <div id="app"></div>
+    <div id="app" class="wrap">
+      <header>
+        <h1>Hi, I’m Niyaz</h1>
+        <p class="tagline">PhD researcher (human–AI interaction & augmented decision‑making) • Product manager</p>
+      </header>
+      <main>
+        <section id="about">
+          <p>
+            Hey, I’m Niyaz from Israel. As a PhD researcher, I study human–AI interaction and augmented
+            decision‑making, building decision‑prediction models at the Technion. I also work as a product
+            manager at a SaaS startup, love my wife, and raise two brilliant daughters.
+          </p>
+          <p>
+            Before that, I worked across a non‑typical mix of data analytics, project management (from software
+            development to construction), process re‑engineering, and human resources.
+          </p>
+          <p>
+            I have a growth mindset. I believe in cognitive flexibility and the immense, yet‑to‑be‑discovered
+            potential of the human brain. I earned my MBA at the Rochester Institute of Technology (NY) and studied
+            linguistics before that. Along the way, I completed courses in cybersecurity, data analytics, and
+            machine learning.
+          </p>
+        </section>
+        <nav class="links">
+          <a href="https://github.com/niyazmukh" rel="me noopener" target="_blank">GitHub</a>
+        </nav>
+      </main>
+      <footer>
+        <span>© <span id="year"></span> Niyaz</span>
+      </footer>
+    </div>
   </body>
 </html>
