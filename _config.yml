@@ -1,10 +1,9 @@
-title: "Niyaz"
-description: "phd researcher — human–ai interaction & augmented decision‑making"
+title: "niyaz"
+description: "phd researcher • human–ai interaction • augmented decision‑making"
 url: "https://niyaz.me"
 baseurl: ""
 permalink: /blog/:year/:month/:day/:title/
 markdown: kramdown
 theme: minima
-# Disable theme's default blog index usage; we use custom tabs
-paginate: 0
+# We don't use built-in pagination; omit `paginate` to disable.
 plugins: []
