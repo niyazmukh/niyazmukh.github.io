@@ -1,3 +1,6 @@
+---
+layout: null
+---
 <!doctype html>
 <html lang="en">
   <head>
@@ -31,7 +34,7 @@
           <button type="button" class="tab" data-tab="projects" role="tab" aria-selected="false" tabindex="-1">projects</button>
         </div>
         <h1>hey, im niyaz</h1>
-        <p class="tagline">phd researcher • growth mindset • human–ai interaction & augmented decision‑making • product manager</p>
+        <p class="tagline">phd researcher • human–ai interaction • augmented decision‑making • product manager</p>
       </header>
       <main>
         <section id="about">
@@ -40,8 +43,7 @@
             augmented decision‑making while building decision‑prediction models.
           </p>
           <p>
-            working as a product manager at a saas startup. love my wife, raise two brilliant
-            daughters.
+            working as a product manager at a saas startup.
           </p>
           <p>
             previous experience spans data analytics, project management (from software to construction),
@@ -49,7 +51,10 @@
             studies in linguistics. "extracurricular" studies includes cybersecurity, data analytics, and machine learning.
           </p>
           <p>
-            curious and growth‑oriented, with an emphasis on cognitive flexibility. hit me up if i can help.
+            love my wife, raise two brilliant daughters (both are in kitot mehunanim and swimming with maccabi haifa).
+          </p>
+          <p>
+            curious and growth‑oriented, with an emphasis on cognitive flexibility. hit me up to talk.
           </p>
         </section>
       
@@ -57,10 +62,19 @@
       
       <section id="blog" hidden>
         <h2>blog</h2>
-        <p>short notes, readings, and quick ideas. posts will appear here.</p>
+        {% if site.posts and site.posts.size > 0 %}
         <ul>
-          <li><em>no posts yet — coming soon.</em></li>
+          {% for post in site.posts %}
+          <li>
+            <a href="{{ post.url | relative_url }}">{{ post.title | escape }}</a>
+            <small>— {{ post.date | date: "%b %d, %Y" }}</small>
+            {% if post.excerpt %}<div class="excerpt">{{ post.excerpt | strip_html | truncate: 140 }}</div>{% endif %}
+          </li>
+          {% endfor %}
         </ul>
+        {% else %}
+        <p><em>no posts yet — coming soon.</em></p>
+        {% endif %}
       </section>
 
   <section id="projects" hidden>
