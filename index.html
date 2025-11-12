@@ -6,29 +6,32 @@
     <title>Niyaz — personal site</title>
     <meta name="description" content="PhD researcher (human–AI interaction) and product manager." />
     <style>
-      :root { color-scheme: light dark; }
-      html { -webkit-text-size-adjust: 100%; }
-      body { font-family: system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif; line-height: 1.7; margin: 0; }
-      .wrap { max-width: 720px; padding: 24px; margin: 0 auto; }
-      header h1 { font-size: 2rem; margin: 0 0 .25rem; }
-      .tagline { margin: 0 0 1rem; opacity: .8; }
-      main section { margin: 1.25rem 0; }
-      .links { margin-top: 1rem; }
-      .links a { display: inline-block; margin-right: 12px; text-decoration: none; border-bottom: 1px solid currentColor; }
-      footer { margin-top: 2rem; opacity: .6; font-size: .9rem; }
+  :root { color-scheme: light dark; }
+  html { -webkit-text-size-adjust: 100%; }
+  body { font-family: system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif; line-height: 1.7; margin: 0; }
+  .wrap { max-width: 720px; padding: 24px; margin: 0 auto; }
+  .tabs { display: flex; gap: 8px; margin-bottom: 18px; }
+  .tab { background: transparent; border: 0; padding: 6px 8px; cursor: pointer; font: inherit; border-radius: 6px; }
+  .tab[aria-selected="true"] { box-shadow: inset 0 -2px 0 currentColor; }
+  header h1 { font-size: 2rem; margin: 10px 0 6px; }
+  .tagline { margin: 0 0 1rem; opacity: .8; }
+  main section { margin: 1.25rem 0; }
+  .links { margin-top: 1rem; }
+  .links a { display: inline-block; margin-right: 12px; text-decoration: none; border-bottom: 1px solid currentColor; text-transform: lowercase; }
+  footer { margin-top: 2rem; opacity: .6; font-size: .9rem; }
     </style>
     <script src="./dist/main.js" defer></script>
   </head>
   <body>
     <div id="app" class="wrap">
       <header>
-        <h1>hi, niyaz</h1>
-        <p class="tagline">phd researcher — human–ai interaction & augmented decision‑making • product manager</p>
         <div class="tabs" role="tablist" aria-label="sections">
-          <button class="tab" data-tab="about" aria-selected="true">about</button>
-          <button class="tab" data-tab="blog" aria-selected="false">blog</button>
-          <button class="tab" data-tab="projects" aria-selected="false">projects</button>
+          <button type="button" class="tab" data-tab="about" role="tab" aria-selected="true" tabindex="0">about</button>
+          <button type="button" class="tab" data-tab="blog" role="tab" aria-selected="false" tabindex="-1">blog</button>
+          <button type="button" class="tab" data-tab="projects" role="tab" aria-selected="false" tabindex="-1">projects</button>
         </div>
+        <h1>hey, im niyaz</h1>
+        <p class="tagline">phd researcher • growth mindset • human–ai interaction & augmented decision‑making • product manager</p>
       </header>
       <main>
         <section id="about">
@@ -37,25 +40,19 @@
             augmented decision‑making while building decision‑prediction models.
           </p>
           <p>
-            also working as a product manager at a saas startup. family life revolves around a partner and two
+            working as a product manager at a saas startup. love my wife, raise two brilliant
             daughters.
           </p>
           <p>
             previous experience spans data analytics, project management (from software to construction),
             process re‑engineering, and human resources. mba from the rochester institute of technology; earlier
-            studies in linguistics. coursework includes cybersecurity, data analytics, and machine learning.
+            studies in linguistics. "extracurricular" studies includes cybersecurity, data analytics, and machine learning.
           </p>
           <p>
-            curious and growth‑oriented, with an emphasis on cognitive flexibility and the untapped potential of
-            human decision making.
+            curious and growth‑oriented, with an emphasis on cognitive flexibility. hit me up if i can help.
           </p>
         </section>
-        <nav class="links" aria-label="social links">
-          <a href="https://github.com/niyazmukh" rel="me noopener" target="_blank">GitHub</a>
-          <a href="https://www.linkedin.com/in/niyazmukh/" rel="noopener" target="_blank">LinkedIn</a>
-          <a href="https://wa.me/972552949854" rel="noopener" target="_blank">WhatsApp</a>
-          <a href="mailto:niyaz.mukh@gmail.com">Email</a>
-        </nav>
+      
       </main>
       
       <section id="blog" hidden>
@@ -66,7 +63,7 @@
         </ul>
       </section>
 
-      <section id="projects" hidden>
+  <section id="projects" hidden>
         <h2>projects</h2>
         <p>a small selection of experiments and tools. details and links will be added here.</p>
         <ul>
@@ -76,7 +73,13 @@
         </ul>
       </section>
       <footer>
-        <span>© <span id="year"></span> Niyaz</span>
+        <nav class="links" aria-label="social links">
+          <a href="https://github.com/niyazmukh" rel="me noopener" target="_blank">github</a>
+          <a href="https://www.linkedin.com/in/niyazmukh/" rel="noopener" target="_blank">linkedin</a>
+          <a href="https://wa.me/972552949854" rel="noopener" target="_blank">whatsapp</a>
+          <a href="mailto:niyaz.mukh@gmail.com">email</a>
+        </nav>
+        <div style="margin-top:12px;"><span>© <span id="year"></span> niyaz</span></div>
       </footer>
     </div>
   </body>
