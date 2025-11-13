@@ -1,6 +1,6 @@
 document.addEventListener('DOMContentLoaded', () => {
   // Set dynamic bits without disturbing the static content
-  document.title = 'Niyaz — personal site';
+  document.title = 'im niyaz';
   const yearEl = document.getElementById('year');
   if (yearEl) yearEl.textContent = String(new Date().getFullYear());
   // tab behavior for about / blog / projects
@@ -55,5 +55,61 @@ document.addEventListener('DOMContentLoaded', () => {
         e.preventDefault();
       }
     });
+  });
+
+  // modal for blog posts
+  const modal = document.getElementById('post-modal');
+  const modalBody = document.getElementById('post-modal-body');
+  const closeBtn = modal?.querySelector('[data-close]') as HTMLButtonElement | null;
+  const postLinks = Array.from(document.querySelectorAll<HTMLAnchorElement>('.post-link'));
+  let lastFocused: HTMLElement | null = null;
+
+  const isModalOpen = () => modal?.getAttribute('aria-hidden') === 'false';
+
+  const closeModal = () => {
+    if (!modal || !modalBody) return;
+    modal.setAttribute('aria-hidden', 'true');
+    modalBody.innerHTML = '';
+    document.body.classList.remove('modal-open');
+    if (lastFocused) {
+      lastFocused.focus();
+      lastFocused = null;
+    }
+  };
+
+  const openModal = (templateId: string, trigger: HTMLElement) => {
+    if (!modal || !modalBody) return;
+    const tpl = document.getElementById(templateId) as HTMLTemplateElement | null;
+    if (!tpl) return;
+    modalBody.innerHTML = '';
+    const cloned = tpl.content.cloneNode(true);
+    modalBody.appendChild(cloned);
+    lastFocused = trigger;
+    modal.setAttribute('aria-hidden', 'false');
+    document.body.classList.add('modal-open');
+    if (closeBtn) closeBtn.focus(); else modalBody.focus();
+  };
+
+  postLinks.forEach(link => {
+    link.addEventListener('click', evt => {
+      const templateId = link.dataset.postTemplate;
+      if (!templateId) return;
+      evt.preventDefault();
+      openModal(templateId, link);
+    });
+  });
+
+  closeBtn?.addEventListener('click', () => closeModal());
+
+  modal?.addEventListener('click', event => {
+    if (event.target === modal) {
+      closeModal();
+    }
+  });
+
+  document.addEventListener('keydown', event => {
+    if (event.key === 'Escape' && isModalOpen()) {
+      closeModal();
+    }
   });
 });

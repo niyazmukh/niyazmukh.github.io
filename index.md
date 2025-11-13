@@ -31,10 +31,20 @@ title: im niyaz
   {% if site.posts and site.posts.size > 0 %}
   <ul>
     {% for post in site.posts %}
+    {% assign slug = post.id | slugify %}
     <li>
-      <a href="{{ post.url | relative_url }}">{{ post.title | escape }}</a>
+      <a class="post-link" href="{{ post.url | relative_url }}" data-post-template="post-template-{{ slug }}">{{ post.title | escape }}</a>
       <small>— {{ post.date | date: "%b %d, %Y" }}</small>
       {% if post.excerpt %}<div class="excerpt">{{ post.excerpt | strip_html | truncate: 140 }}</div>{% endif %}
+      <template id="post-template-{{ slug }}" data-post-template>
+        <article>
+          <header>
+            <h2>{{ post.title | escape }}</h2>
+            <div class="modal-meta">posted {{ post.date | date: "%B %e, %Y" }}</div>
+          </header>
+          {{ post.content }}
+        </article>
+      </template>
     </li>
     {% endfor %}
   </ul>

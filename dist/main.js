@@ -1,65 +1,121 @@
-document.addEventListener('DOMContentLoaded', function () {
-  document.title = 'Niyaz — personal site';
-  var yearEl = document.getElementById('year');
-  if (yearEl)
-    yearEl.textContent = String(new Date().getFullYear());
-  // tab behavior for about / blog / projects
-  var tabs = Array.from(document.querySelectorAll('.tab'));
-  var sections = {
-    about: document.getElementById('about'),
-    blog: document.getElementById('blog'),
-    projects: document.getElementById('projects')
-  };
-  // initialize tabs state
-  tabs.forEach(function (t) {
-    var isActive = t.dataset.tab === 'about';
-    t.setAttribute('aria-selected', String(isActive));
-    t.tabIndex = isActive ? 0 : -1;
-  });
-  var activateTab = function (tab) {
-    var target = tab.dataset.tab || 'about';
-    tabs.forEach(function (t) {
-      var selected = t === tab;
-      t.setAttribute('aria-selected', String(selected));
-      t.tabIndex = selected ? 0 : -1;
+document.addEventListener('DOMContentLoaded', () => {
+    // Set dynamic bits without disturbing the static content
+    document.title = 'im niyaz';
+    const yearEl = document.getElementById('year');
+    if (yearEl)
+        yearEl.textContent = String(new Date().getFullYear());
+    // tab behavior for about / blog / projects
+    const tabs = Array.from(document.querySelectorAll('.tab'));
+    const sections = {
+        about: document.getElementById('about'),
+        blog: document.getElementById('blog'),
+        projects: document.getElementById('projects')
+    };
+    // initialize tabs state
+    tabs.forEach(t => {
+        const isActive = t.dataset.tab === 'about';
+        t.setAttribute('aria-selected', String(isActive));
+        t.tabIndex = isActive ? 0 : -1;
     });
-    Object.keys(sections).forEach(function (k) {
-      var el = sections[k];
-      if (!el)
-        return;
-      if (k === target)
-        el.removeAttribute('hidden');
-      else
-        el.setAttribute('hidden', '');
+    const activateTab = (tab) => {
+        const target = tab.dataset.tab || 'about';
+        tabs.forEach(t => {
+            const selected = t === tab;
+            t.setAttribute('aria-selected', String(selected));
+            t.tabIndex = selected ? 0 : -1;
+        });
+        Object.keys(sections).forEach(k => {
+            const el = sections[k];
+            if (!el)
+                return;
+            if (k === target)
+                el.removeAttribute('hidden');
+            else
+                el.setAttribute('hidden', '');
+        });
+        tab.focus();
+    };
+    tabs.forEach(tab => {
+        tab.addEventListener('click', () => activateTab(tab));
+        tab.addEventListener('keydown', (e) => {
+            const idx = tabs.indexOf(tab);
+            if (e.key === 'ArrowRight') {
+                const next = tabs[(idx + 1) % tabs.length];
+                activateTab(next);
+                e.preventDefault();
+            }
+            else if (e.key === 'ArrowLeft') {
+                const prev = tabs[(idx - 1 + tabs.length) % tabs.length];
+                activateTab(prev);
+                e.preventDefault();
+            }
+            else if (e.key === 'Home') {
+                activateTab(tabs[0]);
+                e.preventDefault();
+            }
+            else if (e.key === 'End') {
+                activateTab(tabs[tabs.length - 1]);
+                e.preventDefault();
+            }
+            else if (e.key === 'Enter' || e.key === ' ') {
+                activateTab(tab);
+                e.preventDefault();
+            }
+        });
     });
-    tab.focus();
-  };
-  tabs.forEach(function (tab) {
-    tab.addEventListener('click', function () { return activateTab(tab); });
-    tab.addEventListener('keydown', function (e) {
-      var idx = tabs.indexOf(tab);
-      if (e.key === 'ArrowRight') {
-        var next = tabs[(idx + 1) % tabs.length];
-        activateTab(next);
-        e.preventDefault();
-      }
-      else if (e.key === 'ArrowLeft') {
-        var prev = tabs[(idx - 1 + tabs.length) % tabs.length];
-        activateTab(prev);
-        e.preventDefault();
-      }
-      else if (e.key === 'Home') {
-        activateTab(tabs[0]);
-        e.preventDefault();
-      }
-      else if (e.key === 'End') {
-        activateTab(tabs[tabs.length - 1]);
-        e.preventDefault();
-      }
-      else if (e.key === 'Enter' || e.key === ' ') {
-        activateTab(tab);
-        e.preventDefault();
-      }
+    // modal for blog posts
+    const modal = document.getElementById('post-modal');
+    const modalBody = document.getElementById('post-modal-body');
+    const closeBtn = modal === null || modal === void 0 ? void 0 : modal.querySelector('[data-close]');
+    const postLinks = Array.from(document.querySelectorAll('.post-link'));
+    let lastFocused = null;
+    const isModalOpen = () => (modal === null || modal === void 0 ? void 0 : modal.getAttribute('aria-hidden')) === 'false';
+    const closeModal = () => {
+        if (!modal || !modalBody)
+            return;
+        modal.setAttribute('aria-hidden', 'true');
+        modalBody.innerHTML = '';
+        document.body.classList.remove('modal-open');
+        if (lastFocused) {
+            lastFocused.focus();
+            lastFocused = null;
+        }
+    };
+    const openModal = (templateId, trigger) => {
+        if (!modal || !modalBody)
+            return;
+        const tpl = document.getElementById(templateId);
+        if (!tpl)
+            return;
+        modalBody.innerHTML = '';
+        const cloned = tpl.content.cloneNode(true);
+        modalBody.appendChild(cloned);
+        lastFocused = trigger;
+        modal.setAttribute('aria-hidden', 'false');
+        document.body.classList.add('modal-open');
+        if (closeBtn)
+            closeBtn.focus();
+        else
+            modalBody.focus();
+    };
+    postLinks.forEach(link => {
+        link.addEventListener('click', evt => {
+            const templateId = link.dataset.postTemplate;
+            if (!templateId)
+                return;
+            evt.preventDefault();
+            openModal(templateId, link);
+        });
     });
-  });
+    closeBtn === null || closeBtn === void 0 ? void 0 : closeBtn.addEventListener('click', () => closeModal());
+    modal === null || modal === void 0 ? void 0 : modal.addEventListener('click', event => {
+        if (event.target === modal) {
+            closeModal();
+        }
+    });
+    document.addEventListener('keydown', event => {
+        if (event.key === 'Escape' && isModalOpen()) {
+            closeModal();
+        }
+    });
 });
