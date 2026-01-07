@@ -55,8 +55,12 @@ title: im niyaz
 
 <section id="projects" hidden>
   <h2>projects</h2>
-  <p>a small selection of experiments and tools. details and links will be added here.</p>
+  <p>a small selection of experiments and tools.</p>
   <ul>
+    <li>
+      <strong>Shrink Ray Model</strong> — interactive tutorial + monte carlo explorer for shrinkflation strategies.
+      <a href="{{ '/static/shrink/' | relative_url }}" target="_blank" rel="noopener">launch</a>
+    </li>
     <li>decision‑prediction models — research code & notes (coming)</li>
     <li>product analytics toolkit — utilities and dashboards (coming)</li>
     <li>small scripts & utilities — assorted helpers (coming)</li>
