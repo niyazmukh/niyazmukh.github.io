@@ -59,7 +59,7 @@ title: im niyaz
   <ul>
     <li>
       <strong>Shrink Ray Model</strong> — interactive tutorial + monte carlo explorer for shrinkflation strategies.
-      <a href="{{ '/static/shrink/' | relative_url }}" target="_blank" rel="noopener">launch</a>
+      <a href="https://niyaz.me/shrink20/" target="_blank" rel="noopener">launch</a>
     </li>
     <li>decision‑prediction models — research code & notes (coming)</li>
     <li>product analytics toolkit — utilities and dashboards (coming)</li>

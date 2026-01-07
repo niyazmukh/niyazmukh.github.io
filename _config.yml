@@ -7,5 +7,3 @@ markdown: kramdown
 theme: minima
 # We don't use built-in pagination; omit `paginate` to disable.
 plugins: []
-exclude:
-  - static/shrink/
