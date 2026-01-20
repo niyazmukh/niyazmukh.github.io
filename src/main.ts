@@ -3,6 +3,7 @@ document.addEventListener('DOMContentLoaded', () => {
   document.title = 'im niyaz';
   const yearEl = document.getElementById('year');
   if (yearEl) yearEl.textContent = String(new Date().getFullYear());
+
   // tab behavior for about / blog / projects
   const tabs = Array.from(document.querySelectorAll('.tab')) as HTMLButtonElement[];
   const sections: Record<string, HTMLElement | null> = {
@@ -60,17 +61,31 @@ document.addEventListener('DOMContentLoaded', () => {
   // modal for blog posts
   const modal = document.getElementById('post-modal');
   const modalBody = document.getElementById('post-modal-body');
+  const appRoot = document.getElementById('app');
   const closeBtn = modal?.querySelector('[data-close]') as HTMLButtonElement | null;
   const postLinks = Array.from(document.querySelectorAll<HTMLAnchorElement>('.post-link'));
   let lastFocused: HTMLElement | null = null;
 
   const isModalOpen = () => modal?.getAttribute('aria-hidden') === 'false';
 
+  const getFocusableInModal = (): HTMLElement[] => {
+    if (!modal) return [];
+    const focusables = modal.querySelectorAll<HTMLElement>(
+      'a[href], button:not([disabled]), textarea:not([disabled]), input:not([disabled]), select:not([disabled]), [tabindex]:not([tabindex="-1"])'
+    );
+    return Array.from(focusables).filter(el => {
+      const style = window.getComputedStyle(el);
+      return style.display !== 'none' && style.visibility !== 'hidden';
+    });
+  };
+
   const closeModal = () => {
     if (!modal || !modalBody) return;
     modal.setAttribute('aria-hidden', 'true');
+    modal.removeAttribute('aria-labelledby');
     modalBody.innerHTML = '';
     document.body.classList.remove('modal-open');
+    if (appRoot) appRoot.removeAttribute('aria-hidden');
     if (lastFocused) {
       lastFocused.focus();
       lastFocused = null;
@@ -84,14 +99,26 @@ document.addEventListener('DOMContentLoaded', () => {
     modalBody.innerHTML = '';
     const cloned = tpl.content.cloneNode(true);
     modalBody.appendChild(cloned);
+
+    const heading = modalBody.querySelector<HTMLElement>('h1, h2, h3');
+    if (heading) {
+      heading.id = heading.id || 'post-modal-title';
+      modal.setAttribute('aria-labelledby', heading.id);
+    }
+
     lastFocused = trigger;
     modal.setAttribute('aria-hidden', 'false');
     document.body.classList.add('modal-open');
+    if (appRoot) appRoot.setAttribute('aria-hidden', 'true');
     if (closeBtn) closeBtn.focus(); else modalBody.focus();
   };
 
   postLinks.forEach(link => {
     link.addEventListener('click', evt => {
+      const mouseEvt = evt as MouseEvent;
+      if (mouseEvt.button !== 0 || mouseEvt.metaKey || mouseEvt.ctrlKey || mouseEvt.shiftKey || mouseEvt.altKey) {
+        return;
+      }
       const templateId = link.dataset.postTemplate;
       if (!templateId) return;
       evt.preventDefault();
@@ -108,8 +135,35 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
   document.addEventListener('keydown', event => {
-    if (event.key === 'Escape' && isModalOpen()) {
+    if (!isModalOpen()) return;
+
+    if (event.key === 'Escape') {
       closeModal();
+      return;
+    }
+
+    if (event.key === 'Tab') {
+      const focusables = getFocusableInModal();
+      if (focusables.length === 0) {
+        event.preventDefault();
+        return;
+      }
+
+      const first = focusables[0];
+      const last = focusables[focusables.length - 1];
+      const active = document.activeElement as HTMLElement | null;
+
+      if (event.shiftKey) {
+        if (!active || active === first || !modal?.contains(active)) {
+          last.focus();
+          event.preventDefault();
+        }
+      } else {
+        if (active === last) {
+          first.focus();
+          event.preventDefault();
+        }
+      }
     }
   });
 });

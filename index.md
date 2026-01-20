@@ -4,21 +4,20 @@ title: im niyaz
 ---
 
 <main>
-  <section id="about">
+  <section id="about" role="tabpanel" aria-labelledby="tab-about">
     <p>
-      based in israel. currently pursuing a phd at the technion, researching human–ai interaction and
-      augmented decision‑making while building decision‑prediction models.
+      based in israel. currently researching human–ai interaction and
+      augmented decision‑making, while building decision‑prediction models.
     </p>
     <p>
       working as a product manager at a saas startup.
     </p>
     <p>
       previous experience spans data analytics, project management (from software to construction),
-      process re‑engineering, and human resources. mba from the rochester institute of technology; earlier
-      studies in linguistics. "extracurricular" studies includes cybersecurity, data analytics, and machine learning.
+      process re‑engineering, and human resources. mba from the rochester institute of technology; earlier - linguistics. "extracurricular" studies includes cybersecurity, data analytics, and machine learning.
     </p>
     <p>
-      love my wife, raise two brilliant daughters (both are in kitot mehunanim and swimming with maccabi haifa).
+      love my wife, raise two brilliant daughters.
     </p>
     <p>
       curious and growth‑oriented, with an emphasis on cognitive flexibility. hit me up to talk.
@@ -26,7 +25,7 @@ title: im niyaz
   </section>
 </main>
 
-<section id="blog" hidden>
+<section id="blog" role="tabpanel" aria-labelledby="tab-blog" hidden>
   <h2>blog</h2>
   {% if site.posts and site.posts.size > 0 %}
   <ul>
@@ -53,7 +52,7 @@ title: im niyaz
   {% endif %}
 </section>
 
-<section id="projects" hidden>
+<section id="projects" role="tabpanel" aria-labelledby="tab-projects" hidden>
   <h2>projects</h2>
   <p>a small selection of experiments and tools.</p>
   <ul>

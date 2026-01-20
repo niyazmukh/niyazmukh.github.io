@@ -5,6 +5,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>im niyaz</title>
     <meta name="description" content="PhD researcher (human–AI interaction) and product manager." />
+    <link rel="icon" type="image/png" sizes="64x64" href="{{ '/favicon6464.png' | relative_url }}" />
+    <link rel="canonical" href="{{ page.url | absolute_url }}" />
+    <meta property="og:site_name" content="{{ site.title | escape }}" />
+    <meta property="og:title" content="{{ page.title | default: site.title | escape }}" />
+    <meta property="og:description" content="{{ page.description | default: site.description | escape }}" />
+    <meta property="og:url" content="{{ page.url | absolute_url }}" />
+    <meta property="og:type" content="website" />
+    <meta name="twitter:card" content="summary" />
     <style>
   :root { color-scheme: light dark; }
   html { -webkit-text-size-adjust: 100%; }
@@ -35,9 +43,9 @@
     <div id="app" class="wrap">
       <header>
         <div class="tabs" role="tablist" aria-label="sections">
-          <button type="button" class="tab" data-tab="about" role="tab" aria-selected="true" tabindex="0">about</button>
-          <button type="button" class="tab" data-tab="blog" role="tab" aria-selected="false" tabindex="-1">blog</button>
-          <button type="button" class="tab" data-tab="projects" role="tab" aria-selected="false" tabindex="-1">projects</button>
+          <button type="button" class="tab" id="tab-about" data-tab="about" role="tab" aria-controls="about" aria-selected="true" tabindex="0">about</button>
+          <button type="button" class="tab" id="tab-blog" data-tab="blog" role="tab" aria-controls="blog" aria-selected="false" tabindex="-1">blog</button>
+          <button type="button" class="tab" id="tab-projects" data-tab="projects" role="tab" aria-controls="projects" aria-selected="false" tabindex="-1">projects</button>
         </div>
         <h1>hey, im niyaz</h1>
         <p class="tagline">phd researcher • human–ai interaction • augmented decision‑making • product manager</p>
@@ -55,7 +63,7 @@
         <div style="margin-top:12px;"><span>© <span id="year"></span> niyaz</span></div>
       </footer>
     </div>
-    <div id="post-modal" role="dialog" aria-modal="true" aria-hidden="true">
+    <div id="post-modal" role="dialog" aria-modal="true" aria-hidden="true" aria-label="Blog post" aria-labelledby="post-modal-title">
       <div class="modal-dialog" role="document">
         <button type="button" class="modal-close" aria-label="close post" data-close>&times;</button>
         <div class="modal-body" id="post-modal-body" tabindex="-1"></div>
