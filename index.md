@@ -6,8 +6,8 @@ title: im niyaz
 <main>
   <section id="about" role="tabpanel" aria-labelledby="tab-about">
     <p>
-      based in israel. currently researching human–ai interaction and
-      augmented decision‑making, while building decision‑prediction models.
+      based in israel. currently a phd researcher for human–ai interaction and
+      augmented decision‑making, building decision‑prediction models.
     </p>
     <p>
       working as a product manager at a saas startup.
