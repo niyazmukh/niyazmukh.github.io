@@ -14,13 +14,13 @@ title: im niyaz
     </p>
     <p>
       previous experience spans data analytics, project management (from software to construction),
-      process re‑engineering, and human resources. mba from the rochester institute of technology; earlier, an ma in linguistics. "extracurricular" studies include cybersecurity and machine learning.
+      process re‑engineering, and human resources. mba from the rochester institute of technology; earlier, ma linguistics. "extracurricular" studies includes cybersecurity, and machine learning.
     </p>
     <p>
-      i love my wife and am raising two brilliant daughters.
+      love my wife, raise two brilliant daughters.
     </p>
     <p>
-      curious and growth‑oriented, with an emphasis on cognitive flexibility. reach out if you want to talk.
+      curious and growth‑oriented, with an emphasis on cognitive flexibility. hit me up to talk.
     </p>
   </section>
 </main>
