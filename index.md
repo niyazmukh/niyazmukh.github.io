@@ -66,6 +66,10 @@ title: im niyaz
       | 
       <a href="https://github.com/niyazmukh/zario2" target="_blank" rel="noopener">source</a>
     </li>
+    <li>
+      <strong>DocEditor</strong> — built at a colleague’s request: a static, in-browser document templating tool (turn highlighted text into fields; export to PDF).
+      <a href="https://github.com/niyazmukh/doceditor" target="_blank" rel="noopener">source</a>
+    </li>
     <li>decision‑prediction models — research code & notes (coming)</li>
     <li>product analytics toolkit — utilities and dashboards (coming)</li>
     <li>small scripts & utilities — assorted helpers (coming)</li>
