@@ -6,7 +6,7 @@ title: im niyaz
 <main>
   <section id="about" role="tabpanel" aria-labelledby="tab-about">
     <p>
-      based in israel. currently a phd researcher for human–ai interaction and
+      based in israel. currently a phd researcher in human–ai interaction and
       augmented decision‑making, building decision‑prediction models.
     </p>
     <p>
@@ -14,13 +14,13 @@ title: im niyaz
     </p>
     <p>
       previous experience spans data analytics, project management (from software to construction),
-      process re‑engineering, and human resources. mba from the rochester institute of technology; earlier - linguistics. "extracurricular" studies includes cybersecurity, data analytics, and machine learning.
+      process re‑engineering, and human resources. mba from the rochester institute of technology; earlier, an ma in linguistics. "extracurricular" studies include cybersecurity and machine learning.
     </p>
     <p>
-      love my wife, raise two brilliant daughters.
+      i love my wife and am raising two brilliant daughters.
     </p>
     <p>
-      curious and growth‑oriented, with an emphasis on cognitive flexibility. hit me up to talk.
+      curious and growth‑oriented, with an emphasis on cognitive flexibility. reach out if you want to talk.
     </p>
   </section>
 </main>
