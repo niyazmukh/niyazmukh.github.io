@@ -61,7 +61,7 @@ title: im niyaz
       <a href="https://niyaz.me/shrink20/" target="_blank" rel="noopener">launch</a>
     </li>
     <li>
-      <strong>Minutes</strong> — digital wellbeing research app: tracks real usage, supports goal-setting, and nudges when you’re near your limit.
+      <strong>Minutes</strong> — built for university of haifa research. explores behavioral nudges and incentives for digital wellbeing.
       <a href="https://play.google.com/store/apps/details?id=com.niyaz.zario" target="_blank" rel="noopener">play store</a>
       <a href="https://github.com/niyazmukh/zario2" target="_blank" rel="noopener">source</a>
     </li>
