@@ -72,6 +72,12 @@ title: im niyaz
       | 
       <a href="https://github.com/niyazmukh/doceditor" target="_blank" rel="noopener">source</a>
     </li>
+    <li>
+      <strong>Intelligence Pipeline</strong> — unified retrieval, outline, evidence, and synthesis to generate a news/developments article on any topic.
+      <a href="https://niyaz.me/content-pipeline/" target="_blank" rel="noopener">launch</a>
+      | 
+      <a href="https://github.com/niyazmukh/content-pipeline" target="_blank" rel="noopener">source</a>
+    </li>
     <li>decision‑prediction models — research code & notes (coming)</li>
     <li>product analytics toolkit — utilities and dashboards (coming)</li>
     <li>small scripts & utilities — assorted helpers (coming)</li>
